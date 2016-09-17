@@ -36,8 +36,10 @@ eselect profile set 6
 
 exit 0 
 
+#CFLAGS="-O2 -pipe -march=native"
+
 echo <<EOF > /etc/portage/make.conf
-CFLAGS="-O2 -pipe -march=native"
+CFLAGS="-O2 -pipe"
 CXXFLAGS="${CFLAGS}"
 CHOST="x86_64-pc-linux-gnu"
 USE="bindist"
