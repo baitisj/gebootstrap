@@ -19,7 +19,7 @@
 # Note that a blank line (commented as "defualt" will send a empty
 # line terminated with a newline to take the fdisk default.
 # From http://superuser.com/questions/332252/creating-and-formating-a-partition-using-a-bash-script
-sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${TGTDEV}
+sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk /dev/sda
   o # clear the in memory partition table
   n # new partition
   p # primary partition
@@ -58,10 +58,11 @@ mkdir /mnt/a/boot
 mount /dev/sda1 /mnt/a/boot
 
 cd /mnt/a
+mkdir etc
 
 # set up filesystem mount
 
-cat <<EOF > /etc/fstab
+cat <<EOF > etc/fstab
 /dev/sda1 /boot ext2 noauto,noatime 1 2
 /dev/sda3 /     ext4 noatime        0 1
 /dev/sda2 none swap defaults
