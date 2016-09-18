@@ -10,6 +10,8 @@ env-update
 
 emerge --sync
 
+passwd root
+
 gunzip -c /proc/config.gz > /usr/src/livecd.config
 emerge genkernel grub sys-kernel/gentoo-sources
 cp config-4.4.6-vbox /usr/src/linux/.config
